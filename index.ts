@@ -20,9 +20,8 @@ async function main() {
 
   // Create workflow pipeline
   const pipeline = new Graph({
-    name: 'content-pipeline',
-    defaultAgentId: researcher.id
-  });
+    name: 'content-pipeline'
+  }, researcher);
 
   // Define workflow steps
   const research = pipeline.addTaskNode({
@@ -38,7 +37,15 @@ async function main() {
 
   // Execute the workflow
   const results = await pipeline.run();
-  console.log('Article completed:', results.results[article].response);
+  
+  // Parse the result and extract the response
+  if (results.success && results.results[article]) {
+    const articleResult = JSON.parse(results.results[article] as string);
+    console.log('Article completed:', articleResult.response);
+  } else {
+    console.log('Workflow failed or no article available');
+    console.log('Errors:', results.errors);
+  }
 }
 
 main().catch(console.error);

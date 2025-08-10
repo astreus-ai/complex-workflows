@@ -21,9 +21,8 @@ npm install
 cp .env.example .env
 ```
 
-3. Edit the `.env` file and add your API key:
-   - For OpenAI API key: https://platform.openai.com/account/api-keys
-   - Alternatively OpenRouter API key: https://openrouter.ai
+3. Edit the `.env` file and add your OpenAI API key:
+   - Get your OpenAI API key: https://platform.openai.com/account/api-keys
 
 ## Running
 
@@ -121,8 +120,6 @@ OPENAI_API_KEY=sk-your-openai-api-key-here
 # Database for workflow persistence
 DB_URL=sqlite://./astreus.db
 
-# Optional: OpenRouter API Key
-OPENROUTER_API_KEY=your-openrouter-api-key-here
 ```
 
 ## Use Cases
